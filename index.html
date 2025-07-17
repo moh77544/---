@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محفظتي الموحدة - جميع المحافظ الإلكترونية اليمنية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-wallet"></i>
+            </div>
+            <h2>محفظتي الموحدة</h2>
+            <div class="loading-spinner"></div>
+            <p>جاري تحميل محافظك...</p>
+        </div>
+    </div>
+
+    <!-- شاشة تسجيل الدخول -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="app-logo">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h1>محفظتي الموحدة</h1>
+                <p>جميع محافظك الإلكترونية في مكان واحد</p>
+            </div>
+
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="phone-number">رقم الهاتف</label>
+                    <div class="input-group">
+                        <span class="input-prefix">+967</span>
+                        <input type="tel" id="phone-number" placeholder="7xxxxxxxx" maxlength="9">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pin-code">رمز PIN</label>
+                    <input type="password" id="pin-code" placeholder="أدخل رمز PIN" maxlength="6">
+                </div>
+
+                <button id="login-btn" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    تسجيل الدخول
+                </button>
+
+                <div class="alternative-login">
+                    <p>أو</p>
+                    <button id="biometric-login" class="btn-secondary">
+                        <i class="fas fa-fingerprint"></i>
+                        تسجيل الدخول بالبصمة
+                    </button>
+                </div>
+
+                <div class="register-link">
+                    <p>ليس لديك حساب؟ <a href="#" id="register-link">إنشاء حساب جديد</a></p>
+                </div>
+            </div>
+
+            <div class="supported-wallets">
+                <h3>المحافظ المدعومة</h3>
+                <div class="wallet-logos">
+                    <div class="wallet-logo" title="جوالي">
+                        <img src="https://play-lh.googleusercontent.com/NuKV_Snecpx633RHzIWvFauG32WBAk-jt3lcZOajw2w7VD8Hdt8h5Lb0pYLopB_Qk4Y=w240-h480" alt="جوالي">
+                    </div>
+                    <div class="wallet-logo" title="ONE Cash">
+                        <img src="https://play-lh.googleusercontent.com/OF2xMRUmNH47BIaOTbv7GgvmLRTQbT1xHkFF_Ocswx6Jq5gfX4VlfAl_275UmjH2pg=w240-h480" alt="ONE Cash">
+                    </div>
+                    <div class="wallet-logo" title="Cash">
+                        <img src="https://play-lh.googleusercontent.com/zkV8HeO6iF2xa77ObHdKfAXfrfjU5fgWB0XsWt7_DmG4VGSKob2jU_CrqWyKQtghQyE=w240-h480" alt="Cash">
+                    </div>
+                    <div class="wallet-logo" title="Jaib">
+                        <img src="https://play-lh.googleusercontent.com/EAaXnjh1FVPYpI5qWZwWvZIV5oD1hm9auDX0owOgREBjMAzYKX9od1USWRzlXIhRvKMx=w240-h480" alt="Jaib">
+                    </div>
+                    <div class="wallet-logo" title="mFloos">
+                        <img src="https://play-lh.googleusercontent.com/mNvakjEk-3VX7icU5w4xmAhT4MQgGAGcQYpRvPkBLVTzD-sYnmzAH_wuglMujTsaqQ=w240-h480" alt="mFloos">
+                    </div>
+                    <div class="wallet-logo" title="Mobile Money">
+                        <img src="https://play-lh.googleusercontent.com/51r7PLMlK0gVvITgOoJ7BnGX-9Gq3_ayiSiHHxSDbJZPCgABXI_LnU6jNCHAefWHvSPV=w240-h480" alt="Mobile Money">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="main-screen" class="screen">
+        <header class="main-header">
+            <div class="header-top">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 id="user-name">مرحباً بك</h3>
+                        <p id="user-phone">+967 7xxxxxxxx</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="notifications-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="icon-btn" id="settings-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="total-balance">
+                <h2>إجمالي الرصيد</h2>
+                <div class="balance-amount" id="total-balance">0 ر.ي</div>
+                <div class="balance-actions">
+                    <button class="btn-small" id="refresh-balance">
+                        <i class="fas fa-sync-alt"></i>
+                        تحديث
+                    </button>
+                    <button class="btn-small" id="hide-balance">
+                        <i class="fas fa-eye-slash"></i>
+                        إخفاء
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- قائمة الإجراءات السريعة -->
+            <section class="quick-actions">
+                <h3>الإجراءات السريعة</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" id="transfer-btn">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>تحويل</span>
+                    </button>
+                    <button class="action-btn" id="pay-bills-btn">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>دفع فواتير</span>
+                    </button>
+                    <button class="action-btn" id="recharge-btn">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>شحن رصيد</span>
+                    </button>
+                    <button class="action-btn" id="qr-scan-btn">
+                        <i class="fas fa-qrcode"></i>
+                        <span>مسح QR</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- قائمة المحافظ -->
+            <section class="wallets-section">
+                <div class="section-header">
+                    <h3>محافظي</h3>
+                    <button class="btn-link" id="manage-wallets">إدارة المحافظ</button>
+                </div>
+                <div class="wallets-list" id="wallets-list">
+                    <!-- سيتم ملء المحافظ ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- آخر المعاملات -->
+            <section class="transactions-section">
+                <div class="section-header">
+                    <h3>آخر المعاملات</h3>
+                    <button class="btn-link" id="view-all-transactions">عرض الكل</button>
+                </div>
+                <div class="transactions-list" id="transactions-list">
+                    <!-- سيتم ملء المعاملات ديناميكياً -->
+                </div>
+            </section>
+        </main>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-screen="main">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </button>
+            <button class="nav-item" data-screen="transfer">
+                <i class="fas fa-exchange-alt"></i>
+                <span>تحويل</span>
+            </button>
+            <button class="nav-item" data-screen="history">
+                <i class="fas fa-history"></i>
+                <span>السجل</span>
+            </button>
+            <button class="nav-item" data-screen="profile">
+                <i class="fas fa-user"></i>
+                <span>الملف الشخصي</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- شاشة التحويل -->
+    <div id="transfer-screen" class="screen">
+        <header class="screen-header">
+            <button class="back-btn" id="transfer-back">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <h2>تحويل الأموال</h2>
+        </header>
+
+        <div class="transfer-content">
+            <div class="transfer-steps">
+                <div class="step-indicator">
+                    <div class="step active" id="transfer-step-1">1</div>
+                    <div class="step-line"></div>
+                    <div class="step" id="transfer-step-2">2</div>
+                    <div class="step-line"></div>
+                    <div class="step" id="transfer-step-3">3</div>
+                </div>
+                <div class="step-labels">
+                    <span>اختيار المحفظة</span>
+                    <span>تفاصيل التحويل</span>
+                    <span>التأكيد</span>
+                </div>
+            </div>
+
+            <!-- الخطوة الأولى: اختيار المحفظة -->
+            <div class="transfer-step-content active" id="transfer-step-content-1">
+                <h3>اختر المحفظة المرسلة</h3>
+                <div class="wallet-selection" id="source-wallet-selection">
+                    <!-- سيتم ملء المحافظ ديناميكياً -->
+                </div>
+            </div>
+
+            <!-- الخطوة الثانية: تفاصيل التحويل -->
+            <div class="transfer-step-content" id="transfer-step-content-2">
+                <h3>تفاصيل التحويل</h3>
+
+                <div class="form-group">
+                    <label>المحفظة المستقبلة</label>
+                    <select id="destination-wallet" class="form-control">
+                        <option value="">-- اختر المحفظة --</option>
+                        <option value="jawali">جوالي</option>
+                        <option value="onecash">ONE Cash</option>
+                        <option value="cash">Cash</option>
+                        <option value="jaib">Jaib</option>
+                        <option value="mfloos">mFloos</option>
+                        <option value="mobilemoney">Mobile Money</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>رقم المستقبل</label>
+                    <div class="input-group">
+                        <span class="input-prefix">+967</span>
+                        <input type="tel" id="recipient-number" placeholder="7xxxxxxxx" maxlength="9" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>المبلغ (ر.ي)</label>
+                    <input type="number" id="transfer-amount" placeholder="أدخل المبلغ" class="form-control">
+                    <div class="amount-suggestions">
+                        <button type="button" class="amount-btn" data-amount="100">100</button>
+                        <button type="button" class="amount-btn" data-amount="500">500</button>
+                        <button type="button" class="amount-btn" data-amount="1000">1000</button>
+                        <button type="button" class="amount-btn" data-amount="5000">5000</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظة (اختياري)</label>
+                    <textarea id="transfer-note" placeholder="أضف ملاحظة..." rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <!-- الخطوة الثالثة: التأكيد -->
+            <div class="transfer-step-content" id="transfer-step-content-3">
+                <h3>تأكيد التحويل</h3>
+
+                <div class="transfer-summary">
+                    <div class="summary-item">
+                        <span>من:</span>
+                        <strong id="summary-from-wallet">-</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>إلى:</span>
+                        <strong id="summary-to-wallet">-</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>رقم المستقبل:</span>
+                        <strong id="summary-recipient">-</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>المبلغ:</span>
+                        <strong id="summary-amount">-</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>رسوم التحويل:</span>
+                        <strong id="summary-fee">-</strong>
+                    </div>
+                    <div class="summary-item total">
+                        <span>إجمالي المبلغ المخصوم:</span>
+                        <strong id="summary-total">-</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>رمز PIN للتأكيد</label>
+                    <input type="password" id="transfer-pin" placeholder="أدخل رمز PIN" maxlength="6" class="form-control">
+                </div>
+            </div>
+
+            <!-- أزرار التنقل -->
+            <div class="transfer-navigation">
+                <button type="button" id="transfer-prev-btn" class="btn-secondary" style="display: none;">
+                    <i class="fas fa-arrow-right"></i>
+                    السابق
+                </button>
+                <button type="button" id="transfer-next-btn" class="btn-primary">
+                    التالي
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button type="button" id="transfer-confirm-btn" class="btn-primary" style="display: none;">
+                    <i class="fas fa-check"></i>
+                    تأكيد التحويل
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- النوافذ المنبثقة والمودالز -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Capacitor Core -->
+    <script type="module" src="https://unpkg.com/@capacitor/core@4/dist/capacitor.js"></script>
+
+    <!-- تحميل الملفات الخارجية -->
+    <script src="notifications.js"></script>
+    <script src="auth.js"></script>
+    <script src="wallets.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Capacitor Initialization -->
+    <script>
+        // تهيئة Capacitor
+        if (window.Capacitor) {
+            console.log('Capacitor is available');
+
+            // إعداد الإشعارات
+            if (window.Capacitor.Plugins.LocalNotifications) {
+                window.Capacitor.Plugins.LocalNotifications.requestPermissions();
+            }
+
+            // إعداد شريط الحالة
+            if (window.Capacitor.Plugins.StatusBar) {
+                window.Capacitor.Plugins.StatusBar.setStyle({ style: 'LIGHT' });
+                window.Capacitor.Plugins.StatusBar.setBackgroundColor({ color: '#4361ee' });
+            }
+
+            // إخفاء شاشة البداية
+            if (window.Capacitor.Plugins.SplashScreen) {
+                setTimeout(() => {
+                    window.Capacitor.Plugins.SplashScreen.hide();
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
